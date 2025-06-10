@@ -43,11 +43,15 @@ button {
   cursor: pointer;
 }
 
-.clear {
-  grid-column: span 4;
-  background-color: #FFBEDA;
+.ac-btn {
+  background-color: #ffbeda; 
   color: white;
 }
+
+.ac-btn:hover {
+  background-color: #ffbeda;
+}
+
 
 .history-section {
   width: 200px;
