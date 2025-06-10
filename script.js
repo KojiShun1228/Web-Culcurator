@@ -1,28 +1,20 @@
+let count = 0; // 計算回数カウンタ
+let isResultDisplayed = false; // 計算結果が表示されているか
+
 function append(value) {
-  document.getElementById("display").value += value;
-}
+  const display = document.getElementById("display");
 
-function clearDisplay() {
-  document.getElementById("display").value = "";
-}
-
-function calculate() {
-  try {
-    const result = eval(document.getElementById("display").value);
-    document.getElementById("display").value = result;
-  } catch {
-    document.getElementById("display").value = "Error";
+  if (isResultDisplayed) {
+    display.value = value;
+    isResultDisplayed = false;
+  } else {
+    display.value += value;
   }
 }
 
-let count = 0; // 計算回数カウンタ
-
-function append(value) {
-  document.getElementById("display").value += value;
-}
-
 function clearDisplay() {
   document.getElementById("display").value = "";
+  isResultDisplayed = false;
 }
 
 function calculate() {
@@ -31,16 +23,20 @@ function calculate() {
     const result = eval(expression);
     document.getElementById("display").value = result;
 
-    // ✅ 計算履歴を追加
+    // 計算履歴を追加
     const historyList = document.getElementById("history");
     const newEntry = document.createElement("li");
     newEntry.textContent = `${expression} = ${result}`;
-    historyList.prepend(newEntry); // 新しい履歴を上に追加
+    historyList.prepend(newEntry);
 
-    // ✅ 計算回数をカウント
+    // 計算回数をカウント
     count++;
     document.getElementById("count").textContent = `Calculations: ${count}`;
+
+    // 結果表示フラグON
+    isResultDisplayed = true;
   } catch {
     document.getElementById("display").value = "Error";
+    isResultDisplayed = false;
   }
 }
