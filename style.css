@@ -7,11 +7,18 @@ body {
   background-color: #f0f0f0;
 }
 
+.container {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
 .calculator {
   background: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px #ccc;
+  width: 260px; /*固定幅*/
 }
 
 #display {
@@ -39,4 +46,25 @@ button {
   grid-column: span 4;
   background-color: #FFBEDA;
   color: white;
+}
+
+.history-section {
+  width: 200px;
+  padding: 15px;
+  background-color: #fafafa;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  height: fit-content;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#history {
+  list-style: none;
+  padding-left: 0;
+}
+
+#history li {
+  font-size: 16px;
+  margin: 5px 0;
 }
