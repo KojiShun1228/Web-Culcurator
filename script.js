@@ -18,8 +18,12 @@ function clearDisplay() {
 }
 
 function calculate() {
+  /*すでに計算結果が表示されていたら、再計算しない*/
+  if (isResultDisplayed) return;
+
   try {
     let expression = document.getElementById("display").value;
+    /*掛け算割り算時に×と÷を置換*/
     expression = expression.replace(/×/g, '*').replace(/÷/g, '/');
     const result = eval(expression);
     document.getElementById("display").value = result;
@@ -27,6 +31,7 @@ function calculate() {
     /*計算履歴を追加*/
     const historyList = document.getElementById("history");
     const newEntry = document.createElement("li");
+    /*こちらも置換*/
     newEntry.textContent = `${expression.replace(/\*/g, '×').replace(/\//g, '÷')} = ${result}`;
     historyList.prepend(newEntry);
 
